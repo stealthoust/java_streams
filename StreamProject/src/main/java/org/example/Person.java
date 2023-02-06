@@ -107,7 +107,7 @@ public class Person {
         );
     }
     public static List<Person> getRandomPeople(int number){
-        if(number<1) return null;
+        if(number<2) return null;
         Faker faker=new Faker();
         Random random=new Random();
         List<Person> list=new ArrayList<>();
