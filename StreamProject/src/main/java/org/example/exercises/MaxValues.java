@@ -1,6 +1,7 @@
 package org.example.exercises;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -16,10 +17,12 @@ public class MaxValues {
                 add(8);
             }
         };
-        //System.out.println(maximum(list));
+
+Collections.sort(list);
+        System.out.println(list);
     }
 
     public static Integer maximum(List<Integer> list) {
-        return list.stream().max(Comparator.comparing(Integer::intValue)).orElse(null);
+         return list.stream().max(Comparator.comparing(Integer::intValue)).orElse(null);
     }
 }
