@@ -3,6 +3,7 @@ package org.example.exercises;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Exercise {
     public static void main(String[] args) {
@@ -18,6 +19,7 @@ public class Exercise {
                 add(8);
             }
         };
+        List<Integer> numbers = IntStream.rangeClosed(1, 150).boxed().toList();
         List<String> stringList = new ArrayList<>() {
             {
                 add("hello");
@@ -26,12 +28,23 @@ public class Exercise {
                 add("world");
             }
         };
+        List<String> stringList2 = new ArrayList<>() {
+            {
+                add("hello");
+                add("world");
+                add("hi");
+                add("javastreams");
+            }
+        };
         //Exercise1(array,integerList);
         //Exercise2(array, integerList);
         //Exercise3(array, integerList);
         //Exercise4(array, integerList);
         //Exercise5(stringList);
         //Exercise6(stringList);
+        //Exercise7(integerList);
+        //Exercise8(stringList2);
+        Exercise9(numbers);
     }
 
 
@@ -89,9 +102,27 @@ public class Exercise {
 
     private static void Exercise6(List<String> stringList) {
         // Find and display unique words in a list
-        stringList=stringList.stream().distinct().sorted(Comparator.comparing(s -> s)).collect(Collectors.toList());
+        stringList = stringList.stream().distinct().sorted(Comparator.comparing(s -> s)).collect(Collectors.toList());
         System.out.println(stringList);
     }
 
+    private static void Exercise7(List<Integer> list) {
+        // Sort numbers in list reversed
+        list = list.stream().sorted(Comparator.comparing(Integer::intValue).reversed()).collect(Collectors.toList());
+        // Alternative way
+        // list.sort(Comparator.comparing(Integer::intValue).reversed());
+        System.out.println(list);
+    }
 
+    private static void Exercise8(List<String> list) {
+        // Find strings due to the use of letters:
+        String result = list.stream().max(Comparator.comparing(l -> l.length())).orElse(null);
+        System.out.println(result);
+    }
+
+    private static void Exercise9(List<Integer> integerList) {
+        // Filter list to have numbers divisible by 3 and 5
+        List<Integer> list = integerList.stream().filter(s -> s % 3 == 0 && s % 5 == 0).toList();
+        System.out.println(list);
+    }
 }
